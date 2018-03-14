@@ -79,6 +79,8 @@ $( document ).ready(function() {
 	blotter.needsUpdate = true;
 
 	var scope = blotter.forText(header);
+	
+	material.uniforms.uOffset.value = 0;
 
 	scope.appendTo($(".title"));
 
@@ -136,6 +138,7 @@ $( document ).ready(function() {
 		var valueProcessed;
 		if (value <= 0.75) {
 			valueProcessed = (value - 0.75) * 4 + 1;
+			console.log(valueProcessed);
 		} else {
 			valueProcessed = 1;
 		}
