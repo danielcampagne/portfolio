@@ -1,6 +1,8 @@
 @import "reset";
 @import "media-queries";
 @import "gridlex/gridlex.scss";
+@import "media-queries";
+/// Mixings
 
 
 
@@ -13,10 +15,37 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
+div {
+  box-sizing: border-box;
+}
+
 .wrapper {
 	width: 100%;
-	max-width: 1200px;
 	margin: 0 auto;
+	padding: 0 100px;
+	box-sizing: border-box;
+}
+
+//// Utils
+
+.up {
+	position: relative;
+	&--bottom {
+		z-index: 5 !important;
+	}
+	&--5 {
+		transform: translateY(-5vw);
+	}
+}
+
+.reveal {
+	opacity: 0;
+  transform: translateY(0);
+  transition: transform 1s ease-out, opacity 1s ease-out;
+  &_visible {
+  		opacity: 1;
+		transform: translateY(-10vw);
+  }
 }
 
 
@@ -27,16 +56,17 @@ body {
 }
 
 .wrapper--projects {
-	max-width: 1200px;
-	margin: 0 auto;
+	max-width: 2000px;
 }
 
 .project {
 	padding: 50vh 0 20vh;
+	position: relative;
 	&__title {
 		display: none;
 	}
 	&__image {
+		position: relative;
 		z-index: 10;
 		img {
 			width: 100%;
@@ -53,6 +83,7 @@ body {
 		letter-spacing: 0.52px;
 		line-height: 19px;
 		font-family: "InterUI-Regular";
+		z-index: -10;
 	}
 	&.most-visible .project__description {
 		display: block;
@@ -69,6 +100,7 @@ body {
 	bottom: 0;
 	left: 0;
 	right: 0;
+	z-index: -10;
 }  
 
 /*.b-canvas {
