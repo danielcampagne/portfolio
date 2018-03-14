@@ -88,7 +88,7 @@ $( document ).ready(function() {
 	///// Project on viewport
 
 	var lastProject, currentProject;;
-	var $sections = $('.wrapper-projects section');
+	var $sections = $('.wrapper--projects section');
 
 	function checkVisibility() {
 		lastProject = $('.most-visible').attr('id');
@@ -143,7 +143,7 @@ $( document ).ready(function() {
 			valueProcessed = 1;
 		}
 		//console.log('value valueProcessed',Math.abs(valueProcessed));
-		//$('#text').css('opacity',valueProcessed);
+		$('.project__description').css('opacity',valueProcessed);
 		material.uniforms.uOffset.value = 1 - valueProcessed;
 	}
 
