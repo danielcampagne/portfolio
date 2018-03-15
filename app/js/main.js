@@ -73,16 +73,28 @@ $( document ).ready(function() {
 	material.uniforms.uRotation.value = 140;
 	var blotter = new Blotter(material, { 
 		texts : [header, kirsi, moj, junait, confapp, jerszy],
-		autobuild : false
 	});
 
 	blotter.needsUpdate = true;
 
-	var scope = blotter.forText(header);
-	
-	material.uniforms.uOffset.value = 0;
+	var isRetina = window.devicePixelRatio;
+	if (isRetina == 1) {
+		var scope = blotter.forText(header);
+		
+		material.uniforms.uOffset.value = 0;
+		//material.uniforms.uAnimateNoise.value = false;
+		//material.uniforms.uApplyBlur.value = false;
+		scope.appendTo($(".title"));
+		
+	}
 
-	scope.appendTo($(".title"));
+
+	//console.log(blotter);
+
+
+
+
+
 
 
 	///// Project on viewport
@@ -100,7 +112,6 @@ $( document ).ready(function() {
 			var scope = blotter.forText(eval(currentProject));
 			$(".title").html("");
 			scope.appendTo($(".title"));
-			console.log(currentProject);
 		}
 
 	}
@@ -134,16 +145,50 @@ $( document ).ready(function() {
 
 	///// Add transitions
 
-	function setOpacity(value) {
+	// var retinaUpVal;
+	// if (isRetina >)
+	// function retinaDown() {
+	// 	blotter.ratio = 1;
+	// }
+	// function retinaUp() {
+	// 	blotter.ratio = 2;
+	// }
+
+
+	// console.log(isRetina);
+	// scope.blotter.ratio = 1;
+	// scope.render();
+
+
+	function setTransformation(value) {
 		var valueProcessed;
 		if (value <= 0.75) {
 			valueProcessed = (value - 0.75) * 4 + 1;
-			console.log(valueProcessed);
 		// } else if (value >= 0.25) {
 		// 	valueProcessed = (value + 0.25) * 4 - 1;
 		// 	console.log('ex---', valueProcessed);
+			if (isRetina > 1) {
+				
+				 // scope.blotter.ratio = 1;
+				 // scope.render();
+	
+
+				 // console.log('retina down');
+				 // console.log(scope);
+
+
+			}
 		} else {
 			valueProcessed = 1;
+			if (isRetina > 1) {
+				// scope.blotter.ratio = 2;
+				// scope.render();
+
+				// scope.pause();
+
+				// console.log('retina up');
+				// console.log(scope);
+			}
 		}
 		//console.log('value valueProcessed',Math.abs(valueProcessed));
 		$('.project__description').css('opacity',valueProcessed);
@@ -158,7 +203,7 @@ $( document ).ready(function() {
 	$(window).on('scroll', function () {
 		checkVisibility();
 		//console.log($('.most-visible').ratioVisible());
-		setOpacity($('.most-visible').ratioVisible());
+		setTransformation($('.most-visible').ratioVisible());
 	});
 
 	///// Reval elements on scroll
@@ -204,15 +249,18 @@ $( document ).ready(function() {
 
 
 	///// Parallax elements
-	$('.behind').paroller({ factor: 0.9, type: 'foreground' });
+	// $('.behind').paroller({ factor: 0.9, type: 'foreground' });
+
+
+
+
+
 
 	///// Snow overlay
 	$('.overlay__toggle').click(function(){
 		$('body').toggleClass('navigation-open');
-	}
-
-
-);
+		$('.hamburger').toggleClass('is-active');
+	});
 
 
 });

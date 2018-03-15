@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<main class=" wrapper wrapper--projects ">
+	<main class="wrapper wrapper--projects ">
 		<div class="title"></div>
 
 		<section id="header">
@@ -27,7 +27,7 @@
 				</div>
 			</div>
 			<div class="grid project__image up up--5 up--bottom">
-				<div class="col-8 behind" data-push-left="off-1">
+				<div class="col-8 behind" data-push-left="off-1" data-speed='4'>
 					<img src="/images/kirsi-pic-1.jpg" />
 				</div>
 			</div>
@@ -47,11 +47,12 @@
 				</div>
 			</div>
 			<div class="grid project__image up up--5 up--bottom">
-				<div class="col-8 behind" data-push-left="off-2">
+				<div class="col-8 behind" data-push-left="off-1">
 					<img src="/images/kirsi-pic-1.jpg" />
 				</div>
 			</div>
 		</section>
+
 
 		<section id="junait" class="project grid">
 			<div class="project__description">
@@ -82,12 +83,14 @@
 		</section>		
 	
 	</main>
-	<a href="#" class="overlay__toggle">
-	    <span class="burger-icon">menu</span>
-	</a>
 
+	<button class="hamburger hamburger--spin overlay__toggle" type="button">
+	  <span class="hamburger-box">
+	    <span class="hamburger-inner"></span>
+	  </span>
+	</button>
 
-	<div class="overlay">
+	<div class="wrapper--overlay">
 		<div class="about-me"></div>
 		<nav class="projects">
 			<a href="#"> Foo </a>
@@ -101,7 +104,6 @@
 	<script src="js/blotter.min.js"></script>
 	<script src="js/channelSplitMaterial.js"></script>
 	<script src="js/most-visible.min.js"></script>
-	<script src="js/jquery.paroller.min.js"></script>
 	<script src="js/main.js"></script>
 </body>
 </html>

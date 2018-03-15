@@ -1,10 +1,9 @@
 @import "reset";
+@import "gridlex/gridlex";
+@import "hamburgers/hamburgers";
 @import "media-queries";
-@import "gridlex/gridlex.scss";
-@import "media-queries";
-/// Mixings
 
-
+/// Mixins
 
 
 //// Base
@@ -15,6 +14,8 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
+textarea, input, button { outline: none; }
+
 div {
   box-sizing: border-box;
 }
@@ -24,6 +25,33 @@ div {
 	margin: 0 auto;
 	padding: 0 100px;
 	box-sizing: border-box;
+	position: relative;
+	overflow: visible;
+	&--main {
+		//transform: translateX(0);
+	}
+	&--overlay {
+		width: 100vw;
+		height: 100vh;
+		position: fixed;
+		background:red;
+		transform: translateX(100%);
+		transition: transform .3s ease-in;
+	}
+	&--projects {
+		max-width: 1600px;
+	}
+}
+
+
+body.navigation-open {
+	.wrapper--main { 
+		transform: translateX(-100%);
+	}
+	.wrapper--overlay { 
+		transform: translateX(0);
+
+	}
 }
 
 //// Utils
@@ -53,10 +81,6 @@ div {
 
 #header {
 	height: 100vh;
-}
-
-.wrapper--projects {
-	max-width: 1600px;
 }
 
 .project {
@@ -105,11 +129,14 @@ div {
 
 //// Navigation
 
+
 .overlay {
+
 	&__toggle {
 		position: fixed;
-		top: 60px;
-		right: 30px;
+		z-index: 20;
+		top: 20px;
+		right: 20px;
 	}
 } 
 
