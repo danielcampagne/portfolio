@@ -74,7 +74,7 @@ $( document ).ready(function() {
 
 	var blotter = new Blotter(material, { 
 		texts : [header, kirsi, moj, junait, confapp, jerszy],
-		ratio: 1
+		//ratio: 1
 	});
 
 	if (window.devicePixelRatio == 1) {}   /// For a retina performance
@@ -131,6 +131,47 @@ $( document ).ready(function() {
 	  capture: true,
 	  passive: true
 	});
+
+
+	////// Parallax elements
+
+
+const easeBoxes = []
+
+// Create an animation for each ease box. Each with a different timing.
+document.querySelectorAll('.easeBox').forEach((elem, i) => {
+
+  // Get the timing from the data attribute.
+  // You can also hard-code the timing, but for the demo it's easier this way.
+  const timing = elem.getAttribute('data-timing')
+
+  // Crate an instance for the current element and store the instance in an array.
+  // We start the animation later using the instances from the array.
+  easeBoxes.push(basicScroll.create({
+    elem: elem,
+    from: 'bottom-bottom',
+    to: 'bottom-top',
+    direct: true,
+    props: {
+      '--ty': {
+        from: '300px',
+        to: '0',
+        timing: timing
+      }
+    }
+  }))
+
+})
+
+easeBoxes.forEach((easeBox) => easeBox.start())
+
+
+
+
+
+
+
+
 
 	///// Snow overlay
 	$('.overlay__toggle').click(function(){

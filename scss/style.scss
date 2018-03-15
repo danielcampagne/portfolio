@@ -62,7 +62,7 @@ body.navigation-open {
 		z-index: 5 !important;
 	}
 	&--5 {
-		transform: translateY(-30vw);
+		transform: translateY(-50vw);
 	}
 }
 
@@ -75,6 +75,12 @@ body.navigation-open {
 // 		transform: translateY(-10vw);
 // 	}
 // }
+.easeBox { transform: translateY(var(--ty)); }
+.rotateBox { transform: rotate(var(--r)); }
+.fadeBox { opacity: var(--o); }
+
+
+
 
 
 //// Main
@@ -86,16 +92,29 @@ body.navigation-open {
 .project {
 	padding: 50vh 0 20vh;
 	position: relative;
+
 	&__title {
 		display: none;
 	}
 	&__image {
+		
 		position: relative;
 		z-index: 10;
+
 		img {
 			width: 100%;
+			will-change: transform;
+			&:before {
+				content: attr(data-timing);
+			}
 		}
-}
+		&__item {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;		
+		}
+	}
 	&__description {
 		display: none;
 		position: fixed;
