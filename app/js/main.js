@@ -6,7 +6,7 @@ $( document ).ready(function() {
 	var header = new Blotter.Text("Daniel Campagne \u2013 Digital Designer", {
 		family : "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
 		weight: "bold",
-		size : 60,
+		size : 65,
 		fill : "#000",
 		paddingTop: 100,
 		paddingBottom: 100,
