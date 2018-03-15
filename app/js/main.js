@@ -206,6 +206,15 @@ $( document ).ready(function() {
 	///// Parallax elements
 	$('.behind').paroller({ factor: 0.9, type: 'foreground' });
 
+	///// Snow overlay
+	$('.overlay__toggle').click(function(){
+		$('body').toggleClass('navigation-open');
+	}
+
+
+);
+
+
 });
 
 
