@@ -34,19 +34,19 @@ div {
 		z-index: 5 !important;
 	}
 	&--5 {
-		transform: translateY(-5vw);
+		transform: translateY(-50vw);
 	}
 }
 
-.reveal {
-	opacity: 0;
-  transform: translateY(0);
-  transition: transform 1s ease-out, opacity 1s ease-out;
-  &_visible {
-  		opacity: 1;
-		transform: translateY(-10vw);
-  }
-}
+// .reveal {
+// 	opacity: 0;
+// 	transform: translateY(0);
+// 	transition: transform 1s ease-out, opacity 1s ease-out;
+// 	&_visible {
+// 			opacity: 1;
+// 		transform: translateY(-10vw);
+// 	}
+// }
 
 
 //// Main
@@ -103,9 +103,13 @@ div {
 	z-index: -10;
 }  
 
-/*.b-canvas {
-	margin-top: -50px;
-	width: 100% !important;
-	height: auto !important;
-  	max-width: 1255px;
-}*/
+//// Navigation
+
+.overlay {
+	&__toggle {
+		position: fixed;
+		top: 60px;
+		right: 30px;
+	}
+} 
+
