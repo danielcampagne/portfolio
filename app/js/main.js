@@ -74,10 +74,15 @@ $( document ).ready(function() {
 
 	var blotter = new Blotter(material, { 
 		texts : [header, kirsi, moj, junait, confapp, jerszy],
-		//ratio: 1
+		ratio: 1
 	});
 
-	if (window.devicePixelRatio == 1) {}   /// For a retina performance
+	if (window.devicePixelRatio > 1) {
+		var isRetina = true;
+		$('.title').hide();
+		$('.title---alternative').show();
+	} 
+
 	var scope = blotter.forText(header);
 	material.uniforms.uOffset.value = 0;
 	scope.appendTo($(".title"));
@@ -102,6 +107,7 @@ $( document ).ready(function() {
 	function setCurrentTitle() {
 		var scope = blotter.forText(eval(currentProject));
 		$(".title").html("");
+		$(".title--alternative").html(scope.text.value).css("font-size",scope.text._properties.size);
 		scope.appendTo($(".title"));
 	}
 
@@ -110,8 +116,21 @@ $( document ).ready(function() {
 		var valueProcessed;
 		if (value <= 0.75) {
 			valueProcessed = (value - 0.75) * 4 + 1;
+			if (isRetina) {
+			 	$('.title').show();
+			 	$('.title--alternative').hide();
+			 	console.log('show blotter');
+			} else {
+				$('.title--alternative').hide();
+			}
+
 		} else {
 			valueProcessed = 1;
+			if (isRetina) {
+			 	$('.title').hide();
+			 	$('.title--alternative').show();
+			 	console.log('hide blotter');
+			}
 		}
 		$('.project__description').css('opacity',valueProcessed);
 		material.uniforms.uOffset.value = 1 - valueProcessed;
@@ -121,11 +140,21 @@ $( document ).ready(function() {
 	///// Listener
 
 	markVisible();
+	if ($(window).scrollTop() === 0) {
+		var firstScroll = "true";
+	}
 
 	document.addEventListener('scroll', (evt) => {
 
 		markVisible();
 		setTransformation($('.most-visible').ratioVisible());
+		console.log($('.most-visible').ratioVisible());
+		if (firstScroll) {
+			animateScroll($('html, body'), 1000, 'easeInQuad', 10, top);
+
+        	firstScroll = false;
+		}
+
 
 	}, {
 	  capture: true,
@@ -136,40 +165,34 @@ $( document ).ready(function() {
 	////// Parallax elements
 
 
-const easeBoxes = []
+	const easeBoxes = []
 
-// Create an animation for each ease box. Each with a different timing.
-document.querySelectorAll('.easeBox').forEach((elem, i) => {
+	// Create an animation for each ease box. Each with a different timing.
+	document.querySelectorAll('.easeBox').forEach((elem, i) => {
 
-  // Get the timing from the data attribute.
-  // You can also hard-code the timing, but for the demo it's easier this way.
-  const timing = elem.getAttribute('data-timing')
+	  // Get the timing from the data attribute.
+	  // You can also hard-code the timing, but for the demo it's easier this way. -> Not used
+	  const timing = elem.getAttribute('data-timing');
 
-  // Crate an instance for the current element and store the instance in an array.
-  // We start the animation later using the instances from the array.
-  easeBoxes.push(basicScroll.create({
-    elem: elem,
-    from: 'bottom-bottom',
-    to: 'bottom-top',
-    direct: true,
-    props: {
-      '--ty': {
-        from: '300px',
-        to: '0',
-        timing: timing
-      }
-    }
-  }))
+	  // Crate an instance for the current element and store the instance in an array.
+	  // We start the animation later using the instances from the array.
+	  easeBoxes.push(basicScroll.create({
+	    elem: elem,
+	    from: 'bottom-bottom',
+	    to: 'bottom-top',
+	    direct: true,
+	    props: {
+	      '--ty': {
+	        from: '300px',
+	        to: '0',
+	        timing: 'backInOut'
+	      }
+	    }
+	  }))
 
-})
+	});
 
-easeBoxes.forEach((easeBox) => easeBox.start())
-
-
-
-
-
-
+	easeBoxes.forEach((easeBox) => easeBox.start());
 
 
 
@@ -179,6 +202,7 @@ easeBoxes.forEach((easeBox) => easeBox.start())
 		$('.hamburger').toggleClass('is-active');
 	});
 
+	//// Header hijack 
 
 });
 
