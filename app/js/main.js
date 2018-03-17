@@ -1,72 +1,96 @@
 'use strict';
+
+var screenFactor = 1;
+var isLoaded = false;
+
+
+/// Preload
+$( window ).on( "load", function(){
+	$('body').fadeIn(1500);
+	isLoaded = true
+});
+
+// Set factor for font sizes
+function checkPosition() {
+if($(window).innerWidth() >= 1400) {
+		screenFactor = 1.4;
+    } else {
+        //...
+    }
+}
+checkPosition();
+
+
+
+
 $( document ).ready(function() {
 
 	 //////// Bottler 
 
-	var header = new Blotter.Text("Daniel Campagne \u2013 Digital Designer", {
-		family : "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+	var header = new Blotter.Text("Daniel Campagne — Digital Designer", {
+		family : "-apple-system-headline, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
 		weight: "bold",
-		size : 65,
+		size : Math.round(50 * screenFactor),
 		fill : "#000",
-		paddingTop: 100,
-		paddingBottom: 100,
-		paddingLeft: 100,
-		paddingRight: 100,
+		paddingTop: Math.round(100 * screenFactor),
+		paddingBottom: Math.round(100 * screenFactor),
+		paddingLeft: Math.round(120 * screenFactor),
+		paddingRight: Math.round(120 * screenFactor),
 	});
 
 	var kirsi = new Blotter.Text("Kirsi Sabri", {
-		family : "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+		family : "-apple-system-headline, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
 		weight: "bold",
-		size : 90,
+		size : 90 * screenFactor,
 		fill : "#000",
-		paddingTop: 100,
-		paddingBottom: 100,
-		paddingLeft: 100,
-		paddingRight: 100,
+		paddingTop: Math.round(100 * screenFactor),
+		paddingBottom: Math.round(100 * screenFactor),
+		paddingLeft: Math.round(120 * screenFactor),
+		paddingRight: Math.round(120 * screenFactor),
 	});
 
 	var moj = new Blotter.Text("My Own Jupiter", {
-		family : "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+		family : "-apple-system-headline, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
 		weight: "bold",
-		size : 80,
+		size : 80 * screenFactor,
 		fill : "#000",
-		paddingTop: 100,
-		paddingBottom: 100,
-		paddingLeft: 100,
-		paddingRight: 100,
+		paddingTop: Math.round(100 * screenFactor),
+		paddingBottom: Math.round(100 * screenFactor),
+		paddingLeft: Math.round(120 * screenFactor),
+		paddingRight: Math.round(120 * screenFactor),
 	});
 
 	var junait = new Blotter.Text("Junait", {
-		family : "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+		family : "-apple-system-headline, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
 		weight: "bold",
-		size : 90,
+		size : 90 * screenFactor,
 		fill : "#000",
-		paddingTop: 100,
-		paddingBottom: 100,
-		paddingLeft: 100,
-		paddingRight: 100,
+		paddingTop: Math.round(100 * screenFactor),
+		paddingBottom: Math.round(100 * screenFactor),
+		paddingLeft: Math.round(120 * screenFactor),
+		paddingRight: Math.round(120 * screenFactor),
 	});
 
 	var confapp = new Blotter.Text("ConfApp", {
-		family : "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+		family : "-apple-system-headline, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
 		weight: "bold",
-		size : 90,
+		size : 90 * screenFactor,
 		fill : "#000",
-		paddingTop: 100,
-		paddingBottom: 100,
-		paddingLeft: 100,
-		paddingRight: 100,
+		paddingTop: Math.round(100 * screenFactor),
+		paddingBottom: Math.round(100 * screenFactor),
+		paddingLeft: Math.round(120 * screenFactor),
+		paddingRight: Math.round(120 * screenFactor),
 	});
 
 	var jerszy = new Blotter.Text("Jerszy Seymour", {
-		family : "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+		family : "-apple-system-headline, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
 		weight: "bold",
-		size : 80,
+		size : 80 * screenFactor,
 		fill : "#000",
-		paddingTop: 100,
-		paddingBottom: 100,
-		paddingLeft: 100,
-		paddingRight: 100,
+		paddingTop: Math.round(100 * screenFactor),
+		paddingBottom: Math.round(100 * screenFactor),
+		paddingLeft: Math.round(120 * screenFactor),
+		paddingRight: Math.round(120 * screenFactor),
 	});
 
 	var material = new Blotter.ChannelSplitMaterial();
@@ -80,13 +104,27 @@ $( document ).ready(function() {
 	if (window.devicePixelRatio > 1) {
 		var isRetina = true;
 		$('.title').hide();
-		$('.title---alternative').show();
+		$('.title--alternative').css("display","flex");
+		console.log('ahora');
 	} 
 
 	var scope = blotter.forText(header);
 	material.uniforms.uOffset.value = 0;
 	scope.appendTo($(".title"));
 
+	console.log(scope);
+
+	///// Generate index
+	var projectsIndex = $(".project").toArray();
+
+	console.log(projectsIndex.length);
+	for (var i = 0; i < projectsIndex.length; i++) {
+		console.log(i);
+		console.log(blotter._texts[i].value);
+
+		$(".project__nav").append('<a href="#' + projectsIndex[i].id +'" ><span class="project__nav__line"></span><span class="project__nav__name">' + blotter._texts[i + 1].value + '</span></a>');
+	}
+	//console.log(projectsIndex[0]);
 
 
 	///// Project on viewport
@@ -107,7 +145,10 @@ $( document ).ready(function() {
 	function setCurrentTitle() {
 		var scope = blotter.forText(eval(currentProject));
 		$(".title").html("");
-		$(".title--alternative").html(scope.text.value).css("font-size",scope.text._properties.size);
+		$(".title--alternative").html(scope.text.value).css({
+			"font-size": scope.text._properties.size,
+			"font-weight": scope.text._properties.weight
+		});
 		scope.appendTo($(".title"));
 	}
 
@@ -140,22 +181,11 @@ $( document ).ready(function() {
 	///// Listener
 
 	markVisible();
-	if ($(window).scrollTop() === 0) {
-		var firstScroll = "true";
-	}
 
 	document.addEventListener('scroll', (evt) => {
-
 		markVisible();
 		setTransformation($('.most-visible').ratioVisible());
-		console.log($('.most-visible').ratioVisible());
-		if (firstScroll) {
-			animateScroll($('html, body'), 1000, 'easeInQuad', 10, top);
-
-        	firstScroll = false;
-		}
-
-
+		// console.log($('.most-visible').ratioVisible());
 	}, {
 	  capture: true,
 	  passive: true
