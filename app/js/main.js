@@ -1,6 +1,6 @@
 'use strict';
 
-var screenFactor = 1;
+var screenFactor = 1.4;
 var isLoaded = false;
 
 
@@ -12,10 +12,10 @@ $( window ).on( "load", function(){
 
 // Set factor for font sizes
 function checkPosition() {
-if($(window).innerWidth() >= 1400) {
-		screenFactor = 1.4;
-    } else {
-        //...
+if ($(window).innerWidth() <= 1346) {
+		screenFactor = 1;
+    // } else if ($(window).innerWidth() <= 700) {
+        
     }
 }
 checkPosition();
@@ -34,8 +34,8 @@ $( document ).ready(function() {
 		fill : "#000",
 		paddingTop: Math.round(100 * screenFactor),
 		paddingBottom: Math.round(100 * screenFactor),
-		paddingLeft: Math.round(120 * screenFactor),
-		paddingRight: Math.round(120 * screenFactor),
+		paddingLeft: Math.round(60 * screenFactor),
+		paddingRight: Math.round(60 * screenFactor),
 	});
 
 	var kirsi = new Blotter.Text("Kirsi Sabri", {

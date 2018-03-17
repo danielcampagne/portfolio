@@ -16,9 +16,6 @@
 
 textarea, input, button { outline: none; }
 
-div {
-}
-
 .wrapper {
 	width: 100%;
 	margin: 0 auto;
@@ -65,21 +62,10 @@ body.navigation-open {
 	}
 }
 
-// .reveal {
-// 	opacity: 0;
-// 	transform: translateY(0);
-// 	transition: transform 1s ease-out, opacity 1s ease-out;
-// 	&_visible {
-// 			opacity: 1;
-// 		transform: translateY(-10vw);
-// 	}
-// }
+
 .easeBox { transform: translateY(var(--ty)); }
 .rotateBox { transform: rotate(var(--r)); }
 .fadeBox { opacity: var(--o); }
-
-
-
 
 
 //// Main
@@ -199,8 +185,8 @@ body.navigation-open {
 	z-index: -10;	
 }  
 
-//// Navigation
 
+//// Navigation
 
 .overlay {
 
