@@ -7,6 +7,7 @@ var scssInput = ['scss/style.scss'],
         'scripts/vendor/rAF.js',
         'scripts/vendor/TweenLite.min.js'
     ],
+    fontsOutput = 'app/fonts',
     scssOutput = 'app/css',
     jsOutput = 'app/scripts';
 
@@ -55,6 +56,9 @@ gulp.task('vendorScripts', function() {
         .pipe(concat('vendor.js'))
         .pipe(gulp.dest(jsOutput));
 });
+
+
+
 
 gulp.task('browserSync', function() {
     browserSync.init({

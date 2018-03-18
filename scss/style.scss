@@ -3,15 +3,44 @@
 @import "hamburgers/hamburgers";
 @import "media-queries";
 
+
+//// Fonts
+
+@font-face {
+	font-family: Inter-UI-Regular;
+	src:
+		url('/fonts/Inter-UI-Regular.woff2') format('woff2'),
+		url('/fonts/Inter-UI-Regular.woff') format('woff');
+}
+
+@font-face {
+	font-family: Inter-UI-Medium;
+	src:
+		url('/fonts/Inter-UI-Medium.woff2') format('woff2'),
+		url('/fonts/Inter-UI-Medium.woff') format('woff');
+}
+
+@font-face {
+	font-family: Inter-UI-Bold;
+	src:
+		url('/fonts/Inter-UI-Bold.woff2') format('woff2'),
+		url('/fonts/Inter-UI-Bold.woff') format('woff');
+}
+
+
 /// Mixins
 
 
 //// Base
 * {
 	box-sizing: border-box;
+	font-family: -apple-system-headline, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+html, body {
+	font-size: 16px;
 	margin: 0;
 	padding: 0;
-	font-family: -apple-system-headline, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
 textarea, input, button { outline: none; }
@@ -23,30 +52,35 @@ textarea, input, button { outline: none; }
 	box-sizing: border-box;
 	position: relative;
 	overflow: visible;
-	&--main {
-		//transform: translateX(0);
-	}
 	&--overlay {
 		width: 100vw;
+		top: 100vh;
 		height: 100vh;
 		position: fixed;
-		background:red;
-		transform: translateX(100%);
-		transition: transform .3s ease-in;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: white;
+		z-index: 10;
+		// opacity: 0;
+		transition: top .3s cubic-bezier(1, 0.78, 1, 1);
 	}
 	&--projects {
 		max-width: 1600px;
 	}
 }
 
+@media (max-width: 767px) {
+	.wrapper {
+		padding: 0;
+	}
+}
 
 body.navigation-open {
-	.wrapper--main { 
-		transform: translateX(-100%);
-	}
-	.wrapper--overlay { 
-		transform: translateX(0);
 
+	.wrapper--overlay { 
+		 top: 0; 
+		 //opacity: 1;
 	}
 }
 
@@ -82,6 +116,8 @@ body.navigation-open {
 		position: fixed;
 		right: 50px;
 		bottom: 50px;
+		cursor: pointer;
+
 		a {
 			display: block;
 			float: right;
@@ -91,9 +127,15 @@ body.navigation-open {
 			color: black;
 			font-size: 14px;
 			width: 18px;
-			padding: 20px 0 0 20px;
+			padding: 15px 0 15px 130px;
 			text-align: right;
-			font-weight: bold;
+			cursor: pointer;
+			position: relative;
+			span {
+				position: absolute;
+				right: 0;
+				cursor: pointer;
+			}
 
 			&:last-child {
 				margin-bottom: 0;
@@ -102,20 +144,27 @@ body.navigation-open {
 			&.active, &:hover {
 				background-color: transparent;
 				width: 120px;
-				span {
-					display: block;
+				.project__nav__line {
+					opacity: 0;
 				}
+				.project__nav__name {
+					opacity: 1;
+				}			
 			}
 		}
 		&__line {
-			display: block;
-			height: 3px;
-			width: 100%;
+			opacity: 1;
+			height: 2px;
+			width: 2px;
 			background: black;
 		}
 
 		&__name {
-			display: none;
+			font-family: "Inter-UI-Regular";
+			opacity: 0;
+			line-height:0;
+			transition: all .5s ease;
+
 		}
 	}
 
@@ -146,12 +195,18 @@ body.navigation-open {
 		width: 260px;
 		left: 50px;
 		bottom: 50px;
-		font-size: 14px;
-		font-weight: 300;
-		letter-spacing: 0.52px;
-		line-height: 19px;
-		font-family: "InterUI-Regular";
 		z-index: -10;
+		h4, span {
+			font-size: 14px;
+			font-weight: unset;
+			letter-spacing: 0.52px;
+			line-height: 18px;
+			font-family: "InterUI-Regular";
+		}
+		h4 {
+			margin-bottom: 10px;
+			font-family: "InterUI-Bold";
+		}
 	}
 	&.most-visible .project__description {
 		display: block;
@@ -186,15 +241,27 @@ body.navigation-open {
 }  
 
 
-//// Navigation
+//// About
 
-.overlay {
-
-	&__toggle {
-		position: fixed;
-		z-index: 20;
-		top: 20px;
-		right: 20px;
-	}
+.overlay__toggle {
+	position: fixed;
+	z-index: 20;
+	top: 20px;
+	right: 20px;
 } 
+
+.about-me {
+	max-width: 700px;
+
+	h2, p {
+		display: block;
+	}
+	h2 {
+		font-size: 72px;
+		margin-bottom: 44px;
+	}
+	p {
+		font-size: 30px
+	}
+}
 

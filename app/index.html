@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width" />
+
 	<title>Daniel Campagne – Digital Designer</title>
 	<link rel="stylesheet" href="css/style.css">
 </head>
@@ -94,18 +96,26 @@
 	</button>
 
 	<div class="wrapper--overlay">
-		<div class="about-me"></div>
-		<nav class="projects">
-			<a href="#"> Foo </a>
-			<a href="#"> Foo </a>
-			<a href="#"> Foo </a>
-			<a href="#"> Foo </a>
-		</nav>
-	</div>
+		<div class="wrapper--about-me">
+			<div class="about-me">
+					<h2>Hello!</h2>
+					<p>I am Daniel Campagne, a Berlin-based Digital Designer. I’ve worked in online projects for some big and small firms providing the graphical side and front-end developement for all sort of web solutions.</p>
+
+					<p>I enjoy crafting visually pleasant interfaces that interact in a clear manner with the user, and ultimately, to convert the client’s needs into easily understandable concepts.</p>
+
+					<p>Reach me at <a href="mailto:hello@danielcampagne.com">hello@danielcampagne</a>.</p>
+				</div>
+			</div>
+		</div>
 
 	<script src="js/jquery-3.3.1.min.js"></script>
-	<script src="js/blotter.min.js"></script>
-	<script src="js/channelSplitMaterial.js"></script>
+	<script>
+    	var isMobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+    	if(!isMobile) {
+    	document.write('\x3Cscript type="text/javascript" src="js/blotter.min.js">\x3C/script>');
+        document.write('\x3Cscript type="text/javascript" src="js/channelSplitMaterial.js">\x3C/script>');
+		}
+	</script>
 	<script src="js/most-visible.min.js"></script>
 	<script src="js/percentage-visible.js"></script>
 	<script src="js/basicScroll.min.js"></script>
