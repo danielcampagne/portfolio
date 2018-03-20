@@ -7,16 +7,22 @@
 	<title>Daniel Campagne – Digital Designer</title>
 	<link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="preloader-site">
 	<main class="wrapper wrapper--projects ">
  		<div class="title"></div>
 		<h1 class="title--alternative" style="display: none;">Daniel Campagne — Digital Designer</h2>	 
+		<nav class="project__nav"></nav>		
 		<section id="header">
+		    <div class="preloader__wrapper">
+			    <div class="preloader">
+					<svg class="spinner" viewBox="0 0 50 50">
+					  <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="9"></circle>
+					</svg>   
+				</div>
+			</div>
+			<div class="scroll-down">
+			</div>
 		</section>
-		<nav class="project__nav">
-
-			
-		</nav>
 		<section id="kirsi" class="project">
 			<h2 class="project__title" data-title="Kirsi Sabri Berlin">Kirsi Sabri Berlin</h2>			
 			<div class="project__description">
@@ -109,6 +115,8 @@
 		</div>
 
 	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/preloader.js"></script>
+
 	<script>
     	var isMobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     	if(!isMobile) {

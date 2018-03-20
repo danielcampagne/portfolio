@@ -5,19 +5,22 @@ var isLoaded = false;
 
 /// Preload
 $( window ).on( "load", function(){
-	$('body').fadeIn(1500);
 	isLoaded = true
+    $('.preloader').hide();
+    $('body').removeClass('preloader-site');
 });
 
 // Set factor for font sizes
 function checkPosition() {
-if ($(window).innerWidth() <= 1346) {
+if ($(window).innerWidth() < 700) {
+		screenFactor = 0.7;	
+	} else if ($(window).innerWidth() < 1346) {
 		screenFactor = 1;
-    // } else if ($(window).innerWidth() <= 700) {}
-    }
+	}
 }
-checkPosition();
 
+checkPosition();
+console.log(screenFactor);
 
 // Check if it's a retina display
 
@@ -34,17 +37,20 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 }
 
 $( document ).ready(function() {
-
 	//////// Projects Oject * Remember to duplicate the information here.
 	if (isMobile) {
 		var projects = {	
+			"header" : {
+				text :"Daniel Campagne — Digital Designer", 
+				size: Math.round(55 * screenFactor)
+			},
 			"kirsi" : {
 				text :"Kirsi Sabri", 
-				size: Math.round(50 * screenFactor)
+				size: Math.round(90 * screenFactor)
 			},
 			"moj" : {
 				text :"My Own Jupiter",
-				size: Math.round(50 * screenFactor)
+				size: Math.round(80 * screenFactor)
 			},
 			"junait" : {
 				text :"Junait",
@@ -61,14 +67,14 @@ $( document ).ready(function() {
 
 		};
 	}
-
+console.log(50 * screenFactor);
 
 	 //////// Bottler 
 	if (!isMobile) {
-		var header = new Blotter.Text("Daniel Campagne — Digital Designer", {
-			family : "-apple-system-headline, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+		var header = new Blotter.Text("Daniel Campagne, Digital Designer", {
+			family : "'bold', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
 			weight: "bold",
-			size : Math.round(50 * screenFactor),
+			size : Math.round(55 * screenFactor),
 			fill : "#000",
 			paddingTop: Math.round(100 * screenFactor),
 			paddingBottom: Math.round(100 * screenFactor),
@@ -77,9 +83,9 @@ $( document ).ready(function() {
 		});
 
 		var kirsi = new Blotter.Text("Kirsi Sabri", {
-			family : "-apple-system-headline, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+			family : "'bold', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
 			weight: "bold",
-			size : Math.round(90 * screenFactor),
+			size : Math.round(105 * screenFactor),
 			fill : "#000",
 			paddingTop: Math.round(100 * screenFactor),
 			paddingBottom: Math.round(100 * screenFactor),
@@ -88,9 +94,9 @@ $( document ).ready(function() {
 		});
 
 		var moj = new Blotter.Text("My Own Jupiter", {
-			family : "-apple-system-headline, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+			family : "'bold', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
 			weight: "bold",
-			size : Math.round(80 * screenFactor),
+			size : Math.round(100 * screenFactor),
 			fill : "#000",
 			paddingTop: Math.round(100 * screenFactor),
 			paddingBottom: Math.round(100 * screenFactor),
@@ -99,7 +105,7 @@ $( document ).ready(function() {
 		});
 
 		var junait = new Blotter.Text("Junait", {
-			family : "-apple-system-headline, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+			family : "'bold', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
 			weight: "bold",
 			size : Math.round(90 * screenFactor),
 			fill : "#000",
@@ -110,7 +116,7 @@ $( document ).ready(function() {
 		});
 
 		var confapp = new Blotter.Text("ConfApp", {
-			family : "-apple-system-headline, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+			family : "'bold', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
 			weight: "bold",
 			size : Math.round(90 * screenFactor),
 			fill : "#000",
@@ -121,7 +127,7 @@ $( document ).ready(function() {
 		});
 
 		var jerszy = new Blotter.Text("Jerszy Seymour", {
-			family : "-apple-system-headline, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+			family : "'bold', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
 			weight: "bold",
 			size : Math.round(80 * screenFactor),
 			fill : "#000",
@@ -149,6 +155,8 @@ $( document ).ready(function() {
 		for (var i = 0; i < projectsIndex.length; i++) {
 			$(".project__nav").append('<a class="project__nav__link project__nav__link--' + projectsIndex[i].id + ' " href="#' + projectsIndex[i].id +'" ><span class="project__nav__line"></span><span class="project__nav__name">' + blotter._texts[i + 1].value + '</span></a>');
 		}
+				//$('.project__nav__link').animatescroll();
+
 	}
 
 
@@ -186,13 +194,10 @@ $( document ).ready(function() {
 			});
 			scope.appendTo($(".title"));
 		} else {
-			if (currentProject !== "header") {
 				scopeMobile = projects[currentProject].text;
-				$(".title--alternative").html(scopeMobile);
-			}
+				$(".title--alternative").html(scopeMobile).css("font-size",projects[currentProject].size);
 		} 
 	}
-
 	//// Define Transformation on scroll
 	function setTransformation(value) {
 		var valueProcessed;
@@ -200,11 +205,12 @@ $( document ).ready(function() {
 			valueProcessed = (value - 0.75) * 4 + 1;
 			if (isRetina) {
 			 	$('.title').show();
-			 	$('.title--alternative').hide();
+			 	if (!isMobile) {
+			 		$('.title--alternative').hide();
+			 	} 
 			} else {
 				$('.title--alternative').hide();
 			}
-
 		} else {
 			valueProcessed = 1;
 			if (isRetina) {
@@ -222,8 +228,12 @@ $( document ).ready(function() {
 	///// Listener
 
 	markVisible();
-
+	var firstScroll = true;
 	document.addEventListener('scroll', (evt) => {
+		if (firstScroll) {
+			firstScroll = false
+			$(".scroll-down").fadeOut("fast");
+		}
 		markVisible();
 		setTransformation($('.most-visible').ratioVisible());
 	}, {
