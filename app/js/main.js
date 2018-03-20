@@ -73,7 +73,6 @@ console.log(50 * screenFactor);
 	if (!isMobile) {
 		var header = new Blotter.Text("Daniel Campagne, Digital Designer", {
 			family : "'bold', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-			weight: "bold",
 			size : Math.round(55 * screenFactor),
 			fill : "#000",
 			paddingTop: Math.round(100 * screenFactor),
@@ -84,7 +83,6 @@ console.log(50 * screenFactor);
 
 		var kirsi = new Blotter.Text("Kirsi Sabri", {
 			family : "'bold', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-			weight: "bold",
 			size : Math.round(105 * screenFactor),
 			fill : "#000",
 			paddingTop: Math.round(100 * screenFactor),
@@ -95,7 +93,6 @@ console.log(50 * screenFactor);
 
 		var moj = new Blotter.Text("My Own Jupiter", {
 			family : "'bold', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-			weight: "bold",
 			size : Math.round(100 * screenFactor),
 			fill : "#000",
 			paddingTop: Math.round(100 * screenFactor),
@@ -106,7 +103,6 @@ console.log(50 * screenFactor);
 
 		var junait = new Blotter.Text("Junait", {
 			family : "'bold', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-			weight: "bold",
 			size : Math.round(90 * screenFactor),
 			fill : "#000",
 			paddingTop: Math.round(100 * screenFactor),
@@ -117,7 +113,6 @@ console.log(50 * screenFactor);
 
 		var confapp = new Blotter.Text("ConfApp", {
 			family : "'bold', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-			weight: "bold",
 			size : Math.round(90 * screenFactor),
 			fill : "#000",
 			paddingTop: Math.round(100 * screenFactor),
@@ -128,7 +123,6 @@ console.log(50 * screenFactor);
 
 		var jerszy = new Blotter.Text("Jerszy Seymour", {
 			family : "'bold', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-			weight: "bold",
 			size : Math.round(80 * screenFactor),
 			fill : "#000",
 			paddingTop: Math.round(100 * screenFactor),

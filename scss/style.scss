@@ -50,9 +50,7 @@
 	font-family: 'bold', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 
 }
-html {
-	overflow: auto;
-}
+
 html, body {
 	font-size: 16px;
 	margin: 0;
@@ -60,10 +58,13 @@ html, body {
 
 }
 
-body {
-	// position: relative;
-	// height: 100%;
+html {
+	overflow: auto;
 }
+
+body {
+	
+	}
 
 textarea, input, button { outline: none; }
 
@@ -74,6 +75,8 @@ textarea, input, button { outline: none; }
 	box-sizing: border-box;
 	position: absolute;
 	top: 0;
+	left: 0;
+	right: 0;
 	overflow: visible;
 	&--overlay {
 		width: 100vw;
@@ -87,6 +90,8 @@ textarea, input, button { outline: none; }
 		z-index: 10;
 		// opacity: 0;
 		transition: top .3s cubic-bezier(1, 0.78, 1, 1);
+		-webkit-transform: translate3d(0, 0, 0);
+transform : translate3d(0, 0, 0);
 	}
 	&--projects {
 		max-width: 1600px;
@@ -207,12 +212,13 @@ body.preloader-site {
 
 
 .scroll-down {
-	width: 40px;
-	height: 60px;
+	width: 30px;
+	height: 45px;
 	border-radius: 20px;
-	border: 5px solid #000;
+	border: 1px solid #000;
 	position: fixed;
 	top: 80vh;
+	opacity: .1;
 	&:before, &:after {
 		content: '';
 		display: block;
@@ -220,14 +226,14 @@ body.preloader-site {
 	}
 
 	&:before {
-		width: 10px;
-		height: 10px;
+		width: 8px;
+		height: 8px;
 		border-radius: 50%;
-		top: 10px;
-		left: calc(50% - 5px);
+		top: 12px;
+		left: calc(50% - 4px);
 		background-color: #000;
 		animation: mouse 4s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-	}
+  	}
 }
 
 @keyframes mouse {
@@ -247,7 +253,7 @@ body.preloader-site {
 		transform: scale(1)
 	}
 	45%, 65%{
-		transform: translateY(24px) scale(.7)
+		transform: translateY(15px) scale(.7)
 	}
 }
 
@@ -271,6 +277,7 @@ body.preloader-site {
 
 .project {
 	padding: 50vh 0 20vh;
+	height: 100%;
 	//position: relative;
 
 	&__nav {
@@ -279,6 +286,8 @@ body.preloader-site {
 		bottom: 50px;
 		cursor: pointer;
 		display: none;
+		-webkit-transform: translate3d(0, 0, 0);
+		transform : translate3d(0, 0, 0);
 		
 		a {
 			display: block;
@@ -358,6 +367,8 @@ body.preloader-site {
 		left: 50px;
 		bottom: 50px;
 		z-index: -10;
+		-webkit-transform: translate3d(0, 0, 0);
+		transform : translate3d(0, 0, 0);
 		h4, span {
 			font-size: 14px;
 			font-weight: unset;
@@ -410,6 +421,8 @@ body.preloader-site {
 	z-index: 20;
 	top: 20px;
 	right: 20px;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform : translate3d(0, 0, 0);
 } 
 
 .about-me {
