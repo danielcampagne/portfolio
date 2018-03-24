@@ -1,5 +1,6 @@
 'use strict';
 
+var lastLoop = new Date;
 var screenFactor = 1.4;
 var isLoaded = false;
 
@@ -14,13 +15,13 @@ $( window ).on( "load", function(){
 function checkPosition() {
 if ($(window).innerWidth() < 700) {
 		screenFactor = 0.7;	
-	} else if ($(window).innerWidth() < 1346) {
-		screenFactor = 1;
+	} else if ($(window).innerWidth() < 1367) {
+		screenFactor = 1.1;
 	}
 }
 
 checkPosition();
-console.log(screenFactor);
+
 
 // Check if it's a retina display
 
@@ -67,11 +68,10 @@ $( document ).ready(function() {
 
 		};
 	}
-console.log(50 * screenFactor);
 
 	 //////// Bottler 
 	if (!isMobile) {
-		var header = new Blotter.Text("Daniel Campagne, Digital Designer", {
+		var header = new Blotter.Text("Daniel Campagne — Digital Designer", {
 			family : "'bold', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
 			size : Math.round(55 * screenFactor),
 			fill : "#000",
@@ -149,7 +149,10 @@ console.log(50 * screenFactor);
 		for (var i = 0; i < projectsIndex.length; i++) {
 			$(".project__nav").append('<a class="project__nav__link project__nav__link--' + projectsIndex[i].id + ' " href="#' + projectsIndex[i].id +'" ><span class="project__nav__line"></span><span class="project__nav__name">' + blotter._texts[i + 1].value + '</span></a>');
 		}
-				//$('.project__nav__link').animatescroll();
+		$('.project__nav__link').on('click', function(event){     
+		    event.preventDefault();
+		    $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+		});
 
 	}
 
@@ -195,8 +198,8 @@ console.log(50 * screenFactor);
 	//// Define Transformation on scroll
 	function setTransformation(value) {
 		var valueProcessed;
-		if (value <= 0.75) {
-			valueProcessed = (value - 0.75) * 4 + 1;
+		if  (value <= 0.80) {
+			valueProcessed = (value - 0.80) * 5 + 1;
 			if (isRetina) {
 			 	$('.title').show();
 			 	if (!isMobile) {
@@ -212,6 +215,7 @@ console.log(50 * screenFactor);
 			 	$('.title--alternative').show();
 			}
 		}
+		console.log(currentProject + ' on the point ' + value + ' process: ' + valueProcessed);
 		$('.project__description').css('opacity',valueProcessed);
 		if (!isMobile) {
 			material.uniforms.uOffset.value = 1 - valueProcessed;
@@ -239,35 +243,24 @@ console.log(50 * screenFactor);
 	////// Parallax elements
 
 
-	const easeBoxes = []
 
-	// Create an animation for each ease box. Each with a different timing.
-	document.querySelectorAll('.easeBox').forEach((elem, i) => {
+// document.querySelectorAll('.move').forEach(function (elem) {
 
-	  // Get the timing from the data attribute.
-	  // You can also hard-code the timing, but for the demo it's easier this way. -> Not used
-	  const timing = elem.getAttribute('data-timing');
+// 	var modifier = elem.getAttribute('data-modifier');
 
-	  // Crate an instance for the current element and store the instance in an array.
-	  // We start the animation later using the instances from the array.
-	  easeBoxes.push(basicScroll.create({
-	    elem: elem,
-	    from: 'bottom-bottom',
-	    to: 'bottom-top',
-	    direct: true,
-	    props: {
-	      '--ty': {
-	        from: '300px',
-	        to: '0',
-	        timing: 'backInOut'
-	      }
-	    }
-	  }))
-
-	});
-
-	easeBoxes.forEach((easeBox) => easeBox.start());
-
+// 	basicScroll.create({
+// 		elem: elem,
+// 		from: 'bottom-bottom',
+// 		to: 'middle-middle',
+// 		direct: true,
+// 		props: {
+// 			'--translateY': {
+// 				from: '0',
+// 				to: 5 * modifier + 'vh'
+// 			}
+// 		}
+// 	}).start();
+// });
 
 
 	///// Snow overlay
