@@ -151,7 +151,11 @@ $( document ).ready(function() {
 		}
 		$('.project__nav__link').on('click', function(event){     
 		    event.preventDefault();
-		    $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+		    $('html,body').animate({scrollTop:$(this.hash).offset().top}, 800, 'swing');
+		});
+		$('.scroll-down').on('click', function(event){     
+		    event.preventDefault();
+		    $('html,body').animate({scrollTop:$('.project').offset().top}, 800, 'swing');
 		});
 
 	}
@@ -215,10 +219,9 @@ $( document ).ready(function() {
 			 	$('.title--alternative').show();
 			}
 		}
-		console.log(currentProject + ' on the point ' + value + ' process: ' + valueProcessed);
 		$('.project__description').css('opacity',valueProcessed);
 		if (!isMobile) {
-			material.uniforms.uOffset.value = 1 - valueProcessed;
+				material.uniforms.uOffset.value = 1 - valueProcessed;
 		}
 	}
 
@@ -226,12 +229,7 @@ $( document ).ready(function() {
 	///// Listener
 
 	markVisible();
-	var firstScroll = true;
 	document.addEventListener('scroll', (evt) => {
-		if (firstScroll) {
-			firstScroll = false
-			$(".scroll-down").fadeOut("fast");
-		}
 		markVisible();
 		setTransformation($('.most-visible').ratioVisible());
 	}, {

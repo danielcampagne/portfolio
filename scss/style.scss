@@ -243,31 +243,42 @@ body.preloader-site {
 	display: flex;
 	margin-bottom: -25vh;
 
-.scroll-down {
-	width: 30px;
-	height: 45px;
-	border-radius: 20px;
-	border: 1px solid rgba(0, 0, 0, .1);;
-	position: fixed;
-	top: 80vh;
-	&:before, &:after {
-		content: '';
+	&.most-visibe .scroll-down {
 		display: block;
-		position: absolute;
 	}
 
-	&:before {
-		width: 8px;
-		height: 8px;
-		border-radius: 50%;
-		top: 12px;
-		left: calc(50% - 4px);
-		background-color: #000;
-		animation: mouse 4s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-	  	}
+	.scroll-down {
+		display: none;
+		width: 30px;
+		height: 45px;
+		border-radius: 20px;
+		border: 1px solid rgba(0, 0, 0, .1);;
+		position: fixed;
+		top: 80vh;
+		z-index: 90;
+		cursor: pointer;
+
+		&:before, &:after {
+			content: '';
+			display: block;
+			position: absolute;
+		}
+		&:before {
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			top: 12px;
+			left: calc(50% - 4px);
+			background-color: #000;
+			animation: mouse 4s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+		  }
 	}
 }
 
+#header.most-visible .scroll-down {
+	display: block;
+	visibility: visible;
+}
 @keyframes mouse {
 	0%, 65%, 100% {
 		opacity: 0
@@ -325,8 +336,8 @@ body.preloader-site {
 
 	&__nav {
 		position: fixed;
-		 z-index: 90;
-		right: 50px;
+		z-index: 90;
+		right: 20px;
 		bottom: 50px;
 		cursor: pointer;
 		display: none;
@@ -341,15 +352,25 @@ body.preloader-site {
 			text-decoration: none;
 			color: black;
 			font-size: 14px;
-			width: 18px;
+			width: 150px;
 			padding: 15px 0 15px 130px;
 			text-align: right;
 			cursor: pointer;
 			position: relative;
 			span {
 				position: absolute;
-				right: 0;
+				right: 20px;
 				cursor: pointer;
+			}
+
+			&.active, &:hover {
+				.project__nav__line {
+					height: 8px;
+					width: 8px;
+					right: 17px;
+					top: 12px;
+					border-radius: 50%;
+				}
 			}
 
 			&:last-child {
@@ -358,10 +379,6 @@ body.preloader-site {
 
 			&:hover {
 				background-color: transparent;
-				width: 120px;
-				.project__nav__line {
-					opacity: 0;
-				}
 				.project__nav__name {
 					opacity: 1;
 				}			
@@ -371,15 +388,22 @@ body.preloader-site {
 			opacity: 1;
 			height: 2px;
 			width: 2px;
+			right: 20px;
+			border-radius: 50%;
 			background: black;
 		}
 
 		&__name {
-			font-family: "Inter-UI-Regular";
+			font-family: "Inter-UI-Medium";
 			opacity: 0;
 			line-height:0;
 			transition: all .5s ease;
-
+			background-color: white;
+			display: block;
+			padding: 15px 5px 15px 10px;
+			margin-right: 10px;
+			top: -1px;
+			right: 10px;
 		}
 	}
 
