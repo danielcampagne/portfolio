@@ -62,13 +62,17 @@ $( document ).ready(function() {
 		}
 	};
 
+
+    // Blotter JS
+    
+
+
 	// Check project on viewport
 	var sections = $('.wrapper--projects section');
 	var currentProject, lastProject;
 	function markVisible() {
 		lastProject = $('.most-visible').attr('id');
 		currentProject = sections.mostVisible().attr('id');
-		console.log(currentProject);
 		if (currentProject !== lastProject) {
 			sections.removeClass('most-visible').mostVisible().addClass('most-visible');
 			setCurrentTitle();
@@ -81,7 +85,18 @@ $( document ).ready(function() {
 	function setCurrentTitle() {
 		scopeMobile = projects[currentProject].text;
 		$(".title--alternative").html(scopeMobile).css("font-size",projects[currentProject].size);
+		console.log(currentProject);
 	}
+
+	///// Arrow functions
+	$('.arrows--down, #header').click(function(){
+		$('html,body').animate({scrollTop:$('.most-visible').next().offset().top - 100}, 600, 'swing');
+	});
+
+	$('.arrows--up').click(function(){
+		$('html,body').animate({scrollTop:$('.most-visible').prev().offset().top - 100}, 600, 'swing');
+	});
+
 
 	///// Snow overlay
 	$('.overlay__toggle').click(function(){
@@ -100,7 +115,6 @@ $( document ).ready(function() {
 	document.addEventListener('scroll', (evt) => {
 		markVisible();
 	}, { capture: true, passive: true });
-
 
 });
 
