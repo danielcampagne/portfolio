@@ -18,7 +18,10 @@ if ($(window).innerWidth() < 700) {
 		screenFactor = 1.1;
 	} else if ($(window).innerWidth() < 1370) {
 		screenFactor = 1.4;
-	}
+	} else {
+		screenFactor = 1.8;
+	} 
+
 }
 checkPosition();
 
@@ -38,7 +41,8 @@ $( document ).ready(function() {
 	var projects = {	
 		"header" : {
 			text :"Daniel Campagne — Digital Designer", 
-			size: Math.round(50 * screenFactor)
+			size: Math.round(38 * screenFactor)
+			//size: "5vmax"
 		},
 		"confapp" : {
 			text :"ConfApp",
@@ -50,11 +54,11 @@ $( document ).ready(function() {
 		},
 		"kirsi" : {
 			text :"Kirsi Sabri", 
-			size: Math.round(95 * screenFactor)
+			size: Math.round(90 * screenFactor)
 		},
 		"moj" : {
 			text :"My Own Jupiter",
-			size: Math.round(80 * screenFactor)
+			size: Math.round(56 * screenFactor)
 		}
 		// "jerszy" : {
 		// 	text :"Jerszy Seymour",
@@ -82,11 +86,27 @@ $( document ).ready(function() {
 	var scopeMobile;
 	function setCurrentTitle() {
 		scopeMobile = projects[currentProject].text;
-		$(".title--alternative").html(scopeMobile).css("font-size",projects[currentProject].size);
+		if (projects[currentProject].text === "Daniel Campagne — Digital Designer") {
+			if (screenFactor === 0.7) {
+				$(".title--alternative").html("Daniel Campagne<br/>Digital Designer").css("font-size",projects[currentProject].size);
+				console.log('ss');
+			} else {
+				$(".title--alternative").html(scopeMobile).css("font-size",projects[currentProject].size);
+			}
+		} else {
+			$(".title--alternative").html(scopeMobile).css("font-size",projects[currentProject].size);
+		}
+
 		if ((Object.keys(projects).indexOf(currentProject) + 1) === Object.keys(projects).length) {
 			$('.arrows').addClass('end');
 		} else {
 			$('.arrows').removeClass('end');
+		}
+		if ((Object.keys(projects).indexOf(currentProject)) === 0) {
+			$('.arrows').fadeOut("fast");
+		} else {
+			$('.arrows').fadeIn("fast");
+
 		}
 	}
 
