@@ -40,6 +40,14 @@ $( document ).ready(function() {
 			text :"Daniel Campagne — Digital Designer", 
 			size: Math.round(50 * screenFactor)
 		},
+		"confapp" : {
+			text :"ConfApp",
+			size: Math.round(95 * screenFactor)
+		},
+		"junait" : {
+			text :"Junait",
+			size: Math.round(95 * screenFactor)
+		},
 		"kirsi" : {
 			text :"Kirsi Sabri", 
 			size: Math.round(95 * screenFactor)
@@ -47,26 +55,12 @@ $( document ).ready(function() {
 		"moj" : {
 			text :"My Own Jupiter",
 			size: Math.round(80 * screenFactor)
-		},
-		"junait" : {
-			text :"Junait",
-			size: Math.round(95 * screenFactor)
-		},
-		"confapp" : {
-			text :"ConfApp",
-			size: Math.round(95 * screenFactor)
-		},
-		"jerszy" : {
-			text :"Jerszy Seymour",
-			size: Math.round(80 * screenFactor)
 		}
+		// "jerszy" : {
+		// 	text :"Jerszy Seymour",
+		// 	size: Math.round(80 * screenFactor)
+		// }
 	};
-
-
-    // Blotter JS
-    
-
-
 	// Check project on viewport
 	var sections = $('.wrapper--projects section');
 	var currentProject, lastProject;
@@ -77,6 +71,10 @@ $( document ).ready(function() {
 			sections.removeClass('most-visible').mostVisible().addClass('most-visible');
 			setCurrentTitle();
 		}
+
+
+		// if (projects.indexOf(currentProject) === projects.lenght) {
+		// } 
 	}
 	markVisible();
 
@@ -85,12 +83,22 @@ $( document ).ready(function() {
 	function setCurrentTitle() {
 		scopeMobile = projects[currentProject].text;
 		$(".title--alternative").html(scopeMobile).css("font-size",projects[currentProject].size);
-		console.log(currentProject);
+		if ((Object.keys(projects).indexOf(currentProject) + 1) === Object.keys(projects).length) {
+			$('.arrows').addClass('end');
+		} else {
+			$('.arrows').removeClass('end');
+		}
 	}
 
 	///// Arrow functions
 	$('.arrows--down, #header').click(function(){
-		$('html,body').animate({scrollTop:$('.most-visible').next().offset().top - 100}, 600, 'swing');
+		console.log($('.most-visible').next());
+		if($('.most-visible').next().length) {
+			$('html,body').animate({scrollTop:$('.most-visible').next().offset().top - 100}, 600, 'swing');
+		} else {
+			$('html,body').animate({scrollTop:$('#header').next().offset().top - 100}, 600, 'swing');
+		}
+	
 	});
 
 	$('.arrows--up').click(function(){
@@ -102,6 +110,9 @@ $( document ).ready(function() {
 	$('.overlay__toggle').click(function(){
 		$('body').toggleClass('navigation-open');
 		$('.hamburger').toggleClass('is-active');
+		$(this).text(function(i, text){
+          return text === "info" ? "close" : "info";
+      	});
 	});
 
 	//// Image change z-index on click
