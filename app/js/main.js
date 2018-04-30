@@ -41,7 +41,7 @@ $( document ).ready(function() {
 	var projects = {	
 		"header" : {
 			text :"Daniel Campagne — Digital Designer", 
-			size: Math.round(38 * screenFactor)
+			size: Math.round(40 * screenFactor)
 			//size: "5vmax"
 		},
 		"confapp" : {
@@ -136,16 +136,62 @@ $( document ).ready(function() {
 	});
 
 	//// Image change z-index on click
-	$(".project__image img").click(function() {
-		$(this).parent().parent().parent().children('.level--top').removeClass('level--top');
-		$(this).parent().parent().addClass('level--top');
-		console.log($(this).parent().parent().parent().children('.level--top'));
+	$(".project__image img:not(.dont-move)").click(function() {
+
+		if (!$(this).parent().parent().hasClass('level--top--1'))  {
+			$(this).parent().parent().hide();
+
+		}
+
+
+		$(this).parent().parent().parent().children('.level--top--4').removeClass('level--top--4');
+		$(this).parent().parent().parent().children('.level--top--3').removeClass('level--top--3').addClass('level--top--4');
+		$(this).parent().parent().parent().children('.level--top--2').removeClass('level--top--2').addClass('level--top--3');
+		$(this).parent().parent().parent().children('.level--top--1').removeClass('level--top--1').addClass('level--top--2');
+
+
+		$(this).parent().parent().removeClass('level--top--1 level--top--2 level--top--3 level--top--4').addClass('level--top--1');
+		if (!$(this).parent().parent().hasClass('level--top--2')) {
+			$(this).parent().parent().fadeIn();
+		}
+
 	});
+
+	// //// Add heights to project pushers
+	// $('.project').each(function(){
+	// 	var sectionStart, sectionEnd;
+	// 	console.log($(this).children('.project__image').last().);
+	// });
 
 	//// Listener
 	document.addEventListener('scroll', (evt) => {
 		markVisible();
 	}, { capture: true, passive: true });
+
+
+/* Simple spam protection for email addresses using jQuery*/
+
+$(function() {
+ $('a[href^="mailto:"]').each(function() {
+  this.href = this.href.replace('(symbol)', '@').replace(/\(dot\)/g, '.');
+  this.innerHTML = this.href.replace('mailto:', '');
+ });
+});/* Simple spam protection for email addresses using jQuery.
+ * Well, the protection isn’t jQuery-based, but you get the idea.
+ * This snippet allows you to slightly ‘obfuscate’ email addresses to make it harder for spambots to harvest them, while still offering a readable address to your visitors.
+ * E.g.
+ * <a href="mailto:foo(at)example(dot)com">foo at example dot com</a>
+ * →
+ * <a href="mailto:foo@example.com">foo@example.com</a>
+ */
+
+$(function() {
+ $('a[href^="mailto:"]').each(function() {
+  this.href = this.href.replace('(at)', '@').replace(/\(dot\)/g, '.');
+  // Remove this line if you don't want to set the email address as link text:
+  this.innerHTML = this.href.replace('mailto:', '');
+ });
+});
 
 });
 
