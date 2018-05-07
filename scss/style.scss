@@ -132,9 +132,12 @@ body.navigation-open {
 
 body.preloader-site {
     overflow: hidden;
-    .scroll-down, .arrows {
-    	display:none;
-    }
+   .wrapper--projects, .overlay__toggle {
+   		display: none;
+   }
+    // .scroll-down, .arrows {
+    // 	display:none;
+    // }
 }
 
 

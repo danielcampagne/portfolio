@@ -41,8 +41,8 @@ $( document ).ready(function() {
 	var projects = {	
 		"header" : {
 			text :"Daniel Campagne — Digital Designer", 
-			size: Math.round(40 * screenFactor)
-			//size: "5vmax"
+			//size: Math.round(40 * screenFactor)
+			size: "5vmax"
 		},
 		"confapp" : {
 			text :"ConfApp",
@@ -65,7 +65,6 @@ $( document ).ready(function() {
 		// 	size: Math.round(80 * screenFactor)
 		// }
 	};
-	// Check project on viewport
 	var sections = $('.wrapper--projects section');
 	var currentProject, lastProject;
 	function markVisible() {
@@ -74,11 +73,9 @@ $( document ).ready(function() {
 		if (currentProject !== lastProject) {
 			sections.removeClass('most-visible').mostVisible().addClass('most-visible');
 			setCurrentTitle();
+			$('.project__description').hide();
+			$('.most-visible .project__description').fadeIn();
 		}
-
-
-		// if (projects.indexOf(currentProject) === projects.lenght) {
-		// } 
 	}
 	markVisible();
 
@@ -89,7 +86,6 @@ $( document ).ready(function() {
 		if (projects[currentProject].text === "Daniel Campagne — Digital Designer") {
 			if (screenFactor === 0.7) {
 				$(".title--alternative").html("Daniel Campagne<br/>Digital Designer").css("font-size",projects[currentProject].size);
-				console.log('ss');
 			} else {
 				$(".title--alternative").html(scopeMobile).css("font-size",projects[currentProject].size);
 			}
@@ -110,6 +106,9 @@ $( document ).ready(function() {
 		}
 	}
 
+
+
+
 	///// Arrow functions
 	$('.arrows--down, #header').click(function(){
 		console.log($('.most-visible').next());
@@ -118,7 +117,6 @@ $( document ).ready(function() {
 		} else {
 			$('html,body').animate({scrollTop:$('#header').next().offset().top - 100}, 600, 'swing');
 		}
-	
 	});
 
 	$('.arrows--up').click(function(){
@@ -140,16 +138,11 @@ $( document ).ready(function() {
 
 		if (!$(this).parent().parent().hasClass('level--top--1'))  {
 			$(this).parent().parent().hide();
-
 		}
-
-
 		$(this).parent().parent().parent().children('.level--top--4').removeClass('level--top--4');
 		$(this).parent().parent().parent().children('.level--top--3').removeClass('level--top--3').addClass('level--top--4');
 		$(this).parent().parent().parent().children('.level--top--2').removeClass('level--top--2').addClass('level--top--3');
 		$(this).parent().parent().parent().children('.level--top--1').removeClass('level--top--1').addClass('level--top--2');
-
-
 		$(this).parent().parent().removeClass('level--top--1 level--top--2 level--top--3 level--top--4').addClass('level--top--1');
 		if (!$(this).parent().parent().hasClass('level--top--2')) {
 			$(this).parent().parent().fadeIn();
