@@ -105,7 +105,7 @@ textarea, input, button { outline: none; }
 		align-items: center;
 		justify-content: center;
 		background: white;
-		z-index: 300;
+		z-index: 302;
 		transition: opacity .5s cubic-bezier(1, 0.78, 1, 1);
 	}
 	&--projects {
@@ -754,7 +754,7 @@ body.preloader-site {
 	.arrows {
 		bottom: 20px;
 		right: 20px;
-		z-index: 99;
+		z-index: 301;
 	}
 	[class~="col"], [class*="col-"], [class*="col_"] {
 		max-width: 100% !important;
