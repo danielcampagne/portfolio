@@ -41,8 +41,8 @@ $( document ).ready(function() {
 	var projects = {	
 		"header" : {
 			text :"Daniel Campagne — Digital Designer", 
-			//size: Math.round(40 * screenFactor)
-			size: "5vmax"
+			size: Math.round(50 * screenFactor)
+			//size: "5vmax"
 		},
 		"confapp" : {
 			text :"ConfApp",
