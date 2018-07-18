@@ -12,8 +12,9 @@ $( window ).on( "load", function(){
 
 // Set factor for font sizes
 function checkPosition() {
+	console.log("checkPosition");
 if ($(window).innerWidth() < 700) {
-		screenFactor = 0.7;	
+		screenFactor = 0.8;	
 	} else if ($(window).innerWidth() < 1025) {
 		screenFactor = 1.1;
 	} else if ($(window).innerWidth() < 1370) {
@@ -23,7 +24,9 @@ if ($(window).innerWidth() < 700) {
 	} 
 
 }
-checkPosition();
+
+ $(window).resize(checkPosition());
+
 
 // Check if it's a retina display
 if (window.devicePixelRatio > 1) {
@@ -41,8 +44,8 @@ $( document ).ready(function() {
 	var projects = {	
 		"header" : {
 			text :"Daniel Campagne — Digital Designer", 
-			size: Math.round(38 * screenFactor)
-			//size: "5vmax"
+			//size: Math.round(45 * screenFactor)
+			size: "4.7vw"
 		},
 		"confapp" : {
 			text :"ConfApp",
@@ -58,14 +61,13 @@ $( document ).ready(function() {
 		},
 		"moj" : {
 			text :"My Own Jupiter",
-			size: Math.round(56 * screenFactor)
+			size: Math.round(80 * screenFactor)
 		}
 		// "jerszy" : {
 		// 	text :"Jerszy Seymour",
 		// 	size: Math.round(80 * screenFactor)
 		// }
 	};
-	// Check project on viewport
 	var sections = $('.wrapper--projects section');
 	var currentProject, lastProject;
 	function markVisible() {
@@ -74,11 +76,10 @@ $( document ).ready(function() {
 		if (currentProject !== lastProject) {
 			sections.removeClass('most-visible').mostVisible().addClass('most-visible');
 			setCurrentTitle();
+			$('.project__description').hide();
+			$('.most-visible .project__description').fadeIn();
+			reloadRellax();
 		}
-
-
-		// if (projects.indexOf(currentProject) === projects.lenght) {
-		// } 
 	}
 	markVisible();
 
@@ -87,14 +88,18 @@ $( document ).ready(function() {
 	function setCurrentTitle() {
 		scopeMobile = projects[currentProject].text;
 		if (projects[currentProject].text === "Daniel Campagne — Digital Designer") {
-			if (screenFactor === 0.7) {
-				$(".title--alternative").html("Daniel Campagne<br/>Digital Designer").css("font-size",projects[currentProject].size);
-				console.log('ss');
+			console.log('currentProject = header');
+			$(".title--alternative").addClass('header');
+			if (screenFactor === 0.8) {
+			console.log('.8');
+				$(".title--alternative").html("Daniel Campagne<br/>Digital Designer").addClass("fluid-text");
 			} else {
-				$(".title--alternative").html(scopeMobile).css("font-size",projects[currentProject].size);
+				//$(".title--alternative").html("Daniel Campagne<br/>Digital Designer").removeClass("fluid-text");
+				$(".title--alternative").html(scopeMobile).css("font-size",projects[currentProject].size).removeClass("fluid-text");
 			}
 		} else {
-			$(".title--alternative").html(scopeMobile).css("font-size",projects[currentProject].size);
+			$(".title--alternative").removeClass('header');
+			$(".title--alternative").html(scopeMobile).css("font-size",projects[currentProject].size).removeClass("fluid-text");
 		}
 
 		if ((Object.keys(projects).indexOf(currentProject) + 1) === Object.keys(projects).length) {
@@ -109,6 +114,10 @@ $( document ).ready(function() {
 
 		}
 	}
+	window.onresize = checkPosition;
+	window.onresize = setCurrentTitle;
+
+
 
 	///// Arrow functions
 	$('.arrows--down, #header').click(function(){
@@ -118,7 +127,6 @@ $( document ).ready(function() {
 		} else {
 			$('html,body').animate({scrollTop:$('#header').next().offset().top - 100}, 600, 'swing');
 		}
-	
 	});
 
 	$('.arrows--up').click(function(){
@@ -136,16 +144,51 @@ $( document ).ready(function() {
 	});
 
 	//// Image change z-index on click
-	$(".project__image img").click(function() {
-		$(this).parent().parent().parent().children('.level--top').removeClass('level--top');
-		$(this).parent().parent().addClass('level--top');
-		console.log($(this).parent().parent().parent().children('.level--top'));
+	$(".project__image img:not(.dont-move)").click(function() {
+
+		if (!$(this).parent().parent().hasClass('level--top--1'))  {
+			$(this).parent().parent().hide();
+		}
+		$(this).parent().parent().parent().children('.level--top--4').removeClass('level--top--4');
+		$(this).parent().parent().parent().children('.level--top--3').removeClass('level--top--3').addClass('level--top--4');
+		$(this).parent().parent().parent().children('.level--top--2').removeClass('level--top--2').addClass('level--top--3');
+		$(this).parent().parent().parent().children('.level--top--1').removeClass('level--top--1').addClass('level--top--2');
+		$(this).parent().parent().removeClass('level--top--1 level--top--2 level--top--3 level--top--4').addClass('level--top--1');
+		if (!$(this).parent().parent().hasClass('level--top--2')) {
+			$(this).parent().parent().fadeIn();
+		}
+
 	});
+
+	//// Parallax
+	function reloadRellax() {
+		if (typeof rellax !== 'undefined') {
+			console.log('destroy!');
+			rellax.destroy();
+		}
+		console.log('create!');
+
+		var rellax = new Rellax('.rellax', {
+		    wrapper: '.most-visible'
+		  })
+	}
+
+
 
 	//// Listener
 	document.addEventListener('scroll', (evt) => {
 		markVisible();
 	}, { capture: true, passive: true });
+
+
+	/// Spam protection
+
+	$(function() {
+	 $('a[href^="mailto:"]').each(function() {
+	  this.href = this.href.replace('(symbol)', '@').replace(/\(dot\)/g, '.');
+	  this.innerHTML = this.href.replace('mailto:', '');
+	 });
+	});
 
 });
 
