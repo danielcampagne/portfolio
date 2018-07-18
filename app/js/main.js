@@ -12,8 +12,9 @@ $( window ).on( "load", function(){
 
 // Set factor for font sizes
 function checkPosition() {
+	console.log("checkPosition");
 if ($(window).innerWidth() < 700) {
-		screenFactor = 0.7;	
+		screenFactor = 0.8;	
 	} else if ($(window).innerWidth() < 1025) {
 		screenFactor = 1.1;
 	} else if ($(window).innerWidth() < 1370) {
@@ -23,7 +24,9 @@ if ($(window).innerWidth() < 700) {
 	} 
 
 }
-checkPosition();
+
+ $(window).resize(checkPosition());
+
 
 // Check if it's a retina display
 if (window.devicePixelRatio > 1) {
@@ -41,8 +44,8 @@ $( document ).ready(function() {
 	var projects = {	
 		"header" : {
 			text :"Daniel Campagne — Digital Designer", 
-			size: Math.round(50 * screenFactor)
-			//size: "5vmax"
+			//size: Math.round(45 * screenFactor)
+			size: "4.7vw"
 		},
 		"confapp" : {
 			text :"ConfApp",
@@ -58,7 +61,7 @@ $( document ).ready(function() {
 		},
 		"moj" : {
 			text :"My Own Jupiter",
-			size: Math.round(56 * screenFactor)
+			size: Math.round(80 * screenFactor)
 		}
 		// "jerszy" : {
 		// 	text :"Jerszy Seymour",
@@ -75,6 +78,7 @@ $( document ).ready(function() {
 			setCurrentTitle();
 			$('.project__description').hide();
 			$('.most-visible .project__description').fadeIn();
+			reloadRellax();
 		}
 	}
 	markVisible();
@@ -84,13 +88,18 @@ $( document ).ready(function() {
 	function setCurrentTitle() {
 		scopeMobile = projects[currentProject].text;
 		if (projects[currentProject].text === "Daniel Campagne — Digital Designer") {
-			if (screenFactor === 0.7) {
-				$(".title--alternative").html("Daniel Campagne<br/>Digital Designer").css("font-size",projects[currentProject].size);
+			console.log('currentProject = header');
+			$(".title--alternative").addClass('header');
+			if (screenFactor === 0.8) {
+			console.log('.8');
+				$(".title--alternative").html("Daniel Campagne<br/>Digital Designer").addClass("fluid-text");
 			} else {
-				$(".title--alternative").html(scopeMobile).css("font-size",projects[currentProject].size);
+				//$(".title--alternative").html("Daniel Campagne<br/>Digital Designer").removeClass("fluid-text");
+				$(".title--alternative").html(scopeMobile).css("font-size",projects[currentProject].size).removeClass("fluid-text");
 			}
 		} else {
-			$(".title--alternative").html(scopeMobile).css("font-size",projects[currentProject].size);
+			$(".title--alternative").removeClass('header');
+			$(".title--alternative").html(scopeMobile).css("font-size",projects[currentProject].size).removeClass("fluid-text");
 		}
 
 		if ((Object.keys(projects).indexOf(currentProject) + 1) === Object.keys(projects).length) {
@@ -105,7 +114,8 @@ $( document ).ready(function() {
 
 		}
 	}
-
+	window.onresize = checkPosition;
+	window.onresize = setCurrentTitle;
 
 
 
@@ -150,11 +160,20 @@ $( document ).ready(function() {
 
 	});
 
-	// //// Add heights to project pushers
-	// $('.project').each(function(){
-	// 	var sectionStart, sectionEnd;
-	// 	console.log($(this).children('.project__image').last().);
-	// });
+	//// Parallax
+	function reloadRellax() {
+		if (typeof rellax !== 'undefined') {
+			console.log('destroy!');
+			rellax.destroy();
+		}
+		console.log('create!');
+
+		var rellax = new Rellax('.rellax', {
+		    wrapper: '.most-visible'
+		  })
+	}
+
+
 
 	//// Listener
 	document.addEventListener('scroll', (evt) => {
@@ -162,29 +181,14 @@ $( document ).ready(function() {
 	}, { capture: true, passive: true });
 
 
-/* Simple spam protection for email addresses using jQuery*/
+	/// Spam protection
 
-$(function() {
- $('a[href^="mailto:"]').each(function() {
-  this.href = this.href.replace('(symbol)', '@').replace(/\(dot\)/g, '.');
-  this.innerHTML = this.href.replace('mailto:', '');
- });
-});/* Simple spam protection for email addresses using jQuery.
- * Well, the protection isn’t jQuery-based, but you get the idea.
- * This snippet allows you to slightly ‘obfuscate’ email addresses to make it harder for spambots to harvest them, while still offering a readable address to your visitors.
- * E.g.
- * <a href="mailto:foo(at)example(dot)com">foo at example dot com</a>
- * →
- * <a href="mailto:foo@example.com">foo@example.com</a>
- */
-
-$(function() {
- $('a[href^="mailto:"]').each(function() {
-  this.href = this.href.replace('(at)', '@').replace(/\(dot\)/g, '.');
-  // Remove this line if you don't want to set the email address as link text:
-  this.innerHTML = this.href.replace('mailto:', '');
- });
-});
+	$(function() {
+	 $('a[href^="mailto:"]').each(function() {
+	  this.href = this.href.replace('(symbol)', '@').replace(/\(dot\)/g, '.');
+	  this.innerHTML = this.href.replace('mailto:', '');
+	 });
+	});
 
 });
 

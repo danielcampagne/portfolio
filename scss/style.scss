@@ -200,106 +200,106 @@ body.preloader-site {
 			opacity: 1;
 		} 
 	 
-		.down {
-			position: relative;
-			opacity: 1;
-			will-change: transform;
+// 		.down {
+// 			position: relative;
+// 			opacity: 1;
+// 			will-change: transform;
 
-			&--1 {
-				-webkit-transform: translateY(60px);
-				transform: translateY(60px);
-			}
-			&--2 {
-				-webkit-transform: translateY(120px);
-				transform: translateY(120px);
-			}
-			&--3 {
-				-webkit-transform: translateY(180px);
-				transform: translateY(180px);
-			}
-			&--4 {
-				-webkit-transform: translateY(240px);
-				transform: translateY(240px);
-			}
-			&--5 {
-				-webkit-transform: translateY(300px);
-				transform: translateY(300px);
-			}
-			&--6 {
-				-webkit-transform: translateY(360px);
-				transform: translateY(360px);
-			}
-			&--65 {
-				-webkit-transform: translateY(420px);
-				transform: translateY(420px);
-			}
-			&--7 {
-				-webkit-transform: translateY(480px);
-				transform: translateY(480px);
-			}
-			&--8 {
-				-webkit-transform: translateY(540px);
-				transform: translateY(540px);
-			}
-			&--9 {
-				-webkit-transform: translateY(600px);
-				transform: translateY(600px);
-			}	
-			&--10 {
-				-webkit-transform: translateY(660px);
-				transform: translateY(660px);
-			}		
-			&--11 {
-				-webkit-transform: translateY(720px);
-				transform: translateY(720px);
-			}	
-			&--12 {
-				-webkit-transform: translateY(780px);
-				transform: translateY(780px);
-			}		
-			&--13 {
-				-webkit-transform: translateY(840px);
-				transform: translateY(840px);
-			}	
-			&--14 {
-				-webkit-transform: translateY(900px);
-				transform: translateY(900px);
-			}	
-			&--15 {
-				-webkit-transform: translateY(960px);
-				transform: translateY(960px);
-			}	
-			&--16 {
-				-webkit-transform: translateY(1020px);
-				transform: translateY(1020px);
-			}	
-			&--17 {
-				-webkit-transform: translateY(1080px);
-				transform: translateY(1080px);
-			}	
-			&--18 {
-				-webkit-transform: translateY(1140px);
-				transform: translateY(1140px);
-			}	
-			&--19 {
-				-webkit-transform: translateY(1200px);
-				transform: translateY(1200px);
-			}	
-			&--20 {
-				-webkit-transform: translateY(1260px);
-				transform: translateY(1260px);
-			}	
-			&--21 {
-				-webkit-transform: translateY(1320px);
-				transform: translateY(1320px);
-			}	
-			&--22 {
-				-webkit-transform: translateY(1380px);
-				transform: translateY(1380px);
-			}			
-		}
+// 			&--1 {
+// 				-webkit-transform: translateY(60px);
+// 				transform: translateY(60px);
+// 			}
+// 			&--2 {
+// 				-webkit-transform: translateY(120px);
+// 				transform: translateY(120px);
+// 			}
+// 			&--3 {
+// 				-webkit-transform: translateY(180px);
+// 				transform: translateY(180px);
+// 			}
+// 			&--4 {
+// 				-webkit-transform: translateY(240px);
+// 				transform: translateY(240px);
+// 			}
+// 			&--5 {
+// 				-webkit-transform: translateY(300px);
+// 				transform: translateY(300px);
+// 			}
+// 			&--6 {
+// 				-webkit-transform: translateY(360px);
+// 				transform: translateY(360px);
+// 			}
+// 			&--65 {
+// 				-webkit-transform: translateY(420px);
+// 				transform: translateY(420px);
+// 			}
+// 			&--7 {
+// 				-webkit-transform: translateY(480px);
+// 				transform: translateY(480px);
+// 			}
+// 			&--8 {
+// 				-webkit-transform: translateY(540px);
+// 				transform: translateY(540px);
+// 			}
+// 			&--9 {
+// 				-webkit-transform: translateY(600px);
+// 				transform: translateY(600px);
+// 			}	
+// 			&--10 {
+// 				-webkit-transform: translateY(660px);
+// 				transform: translateY(660px);
+// 			}		
+// 			&--11 {
+// 				-webkit-transform: translateY(720px);
+// 				transform: translateY(720px);
+// 			}	
+// 			&--12 {
+// 				-webkit-transform: translateY(780px);
+// 				transform: translateY(780px);
+// 			}		
+// 			&--13 {
+// 				-webkit-transform: translateY(840px);
+// 				transform: translateY(840px);
+// 			}	
+// 			&--14 {
+// 				-webkit-transform: translateY(900px);
+// 				transform: translateY(900px);
+// 			}	
+// 			&--15 {
+// 				-webkit-transform: translateY(960px);
+// 				transform: translateY(960px);
+// 			}	
+// 			&--16 {
+// 				-webkit-transform: translateY(1020px);
+// 				transform: translateY(1020px);
+// 			}	
+// 			&--17 {
+// 				-webkit-transform: translateY(1080px);
+// 				transform: translateY(1080px);
+// 			}	
+// 			&--18 {
+// 				-webkit-transform: translateY(1140px);
+// 				transform: translateY(1140px);
+// 			}	
+// 			&--19 {
+// 				-webkit-transform: translateY(1200px);
+// 				transform: translateY(1200px);
+// 			}	
+// 			&--20 {
+// 				-webkit-transform: translateY(1260px);
+// 				transform: translateY(1260px);
+// 			}	
+// 			&--21 {
+// 				-webkit-transform: translateY(1320px);
+// 				transform: translateY(1320px);
+// 			}	
+// 			&--22 {
+// 				-webkit-transform: translateY(1380px);
+// 				transform: translateY(1380px);
+// 			}			
+// 		}
 	}	
-}
+ }
 	
 
 .level {
@@ -572,7 +572,7 @@ body.preloader-site {
 			font-size: 16px;
 			font-weight: unset;
 			letter-spacing: 0.52px;
-			float: left;
+			//float: left;
 			line-height: 22px;
 			font-family: "book";
 			display: inline;
@@ -582,7 +582,7 @@ body.preloader-site {
 		    box-decoration-break: clone;
 		}
 		h4 {
-			display: inline-block;
+			display: table;
 			clear: both;
 			font-family: "bold";
 			margin: 0 0 0px;
@@ -647,13 +647,28 @@ body.preloader-site {
 	align-items: center; 
 	justify-content: center;
 	position: fixed;
+	letter-spacing: -0.04vw;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
 	z-index: -10;	
 	font-weight: normal;
+
+	&.fluid-text {
+		font-size: 9vw !important;
+		line-height: 12.3vw !important;
+		text-align: center;
+
+	}
 }  
+
+
+@media (min-width: 1800px) {
+	.header {
+		font-size: 95px !important;
+	}
+}
 
 //// Nav
 
@@ -722,7 +737,9 @@ body.preloader-site {
 
 	a {
 		text-decoration: none;
-		&:hover {
+		color: blue;
+		&:hover, &:focus, &:active {
+			color:blue;
 			border-bottom: 4px solid blue;
 		}
 	}
@@ -740,7 +757,7 @@ body.preloader-site {
 	}
 	.title--alternative {
 		text-align: center;
-		line-height: 40px;
+		line-height: 1.1;
 		padding-bottom: 25vh;
 	} 
 	.scroll-down {
